@@ -8,9 +8,11 @@ namespace ClickAndCoin
         [SerializeField] private Camera currentCamera;
         [SerializeField] private GameObject prefab;
         [SerializeField] private float spawnDelayInSeconds;
+        private Transform _transform;
 
         private void Awake()
         {
+            _transform = transform;
             currentCamera = currentCamera != null ? currentCamera : Camera.main;
         }
 
@@ -38,10 +40,10 @@ namespace ClickAndCoin
             float xPosition = position.x;
             float yPosition = position.y;
 
-            float ortographicSize = camera.orthographicSize;
-            float width = ortographicSize * 2 * camera.aspect;
+            float orthographicSize = camera.orthographicSize;
+            float width = orthographicSize * 2 * camera.aspect;
 
-            float y = yPosition + ortographicSize;
+            float y = yPosition + orthographicSize;
             float xMin = xPosition - width / 2;
             float xMax = xPosition + width / 2;
 
@@ -66,9 +68,9 @@ namespace ClickAndCoin
 
             float yPrefabPosition = cameraY + prefabHeight / 2;
             float xPrefabPosition = Random.Range(cameraMinX, cameraMaxX);
-            var prefabPosition = new Vector2(xPrefabPosition, yPrefabPosition);
+            var prefabPosition = new Vector3(xPrefabPosition, yPrefabPosition, -1);
 
-            var prefabInstance = Instantiate(prefab);
+            var prefabInstance = Instantiate(prefab, _transform);
             prefabInstance.transform.position = prefabPosition;
         }
 

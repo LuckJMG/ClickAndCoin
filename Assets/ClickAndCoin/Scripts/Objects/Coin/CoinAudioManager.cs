@@ -1,21 +1,18 @@
-using System;
 using UnityEngine;
 
 namespace ClickAndCoin
 {
-    public class AudioSourceManager : MonoBehaviour
+    public class CoinAudioManager : MonoBehaviour
     {
         [SerializeField] private AudioClip grabCoinAudio;
         private AudioSource _audioSource;
 
-        private void Awake()
-        {
-            _audioSource = GetComponent<AudioSource>();
-        }
-
         private void Start()
         {
             InputHandler.OnDestroy += OnCoinDestroy;
+
+            var mainAudioSource = GameObject.FindGameObjectWithTag("MainAudioSource");
+            _audioSource = mainAudioSource.GetComponent<AudioSource>();
         }
 
         private void OnDestroy()
@@ -25,7 +22,7 @@ namespace ClickAndCoin
 
         private void OnCoinDestroy()
         {
-            _audioSource.PlayOneShot(grabCoinAudio);
+            if (_audioSource != null) _audioSource.PlayOneShot(grabCoinAudio);
         }
     }
 }
