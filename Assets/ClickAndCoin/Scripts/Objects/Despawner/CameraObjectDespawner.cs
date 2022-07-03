@@ -14,24 +14,12 @@ namespace ClickAndCoin
             _transform = transform;
         }
 
-        private void Start()
+        public void DespawnerInitialization()
         {
-            DespawnerInitialization();
-            gameObject.AddComponent<BoxCollider2D>();
-        }
-
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            Destroy(collision.gameObject);
-        }
-
-        private void DespawnerInitialization()
-        {
-            var spawnerParameters = CameraTransformCalculator(currentCamera, yOffset);
-            float xMin = spawnerParameters.x;
-            float xMax = spawnerParameters.y;
-            float y = spawnerParameters.z;
+            Vector3 despawnerParameters = CameraTransformCalculator(currentCamera, yOffset);
+            float xMin = despawnerParameters.x;
+            float xMax = despawnerParameters.y;
+            float y = despawnerParameters.z;
 
             var startPoint = new Vector2(xMin, y);
             var endPoint = new Vector2(xMax, y);
@@ -45,10 +33,10 @@ namespace ClickAndCoin
             float xPosition = position.x;
             float yPosition = position.y;
 
-            float ortographicSize = camera.orthographicSize;
-            float width = ortographicSize * 2 * camera.aspect;
+            float orthographicSize = camera.orthographicSize;
+            float width = orthographicSize * 2 * camera.aspect;
 
-            float y = yPosition - ortographicSize - yOffset;
+            float y = yPosition - orthographicSize - yOffset;
             float xMin = xPosition - width / 2;
             float xMax = xPosition + width / 2;
 
@@ -56,7 +44,7 @@ namespace ClickAndCoin
             return spawnerParameters;
         }
 
-        public void DespawnerTransformCalculator(Vector3 startPoint, Vector3 endPoint)
+        private void DespawnerTransformCalculator(Vector3 startPoint, Vector3 endPoint)
         {
             float yPosition = startPoint.y;
 

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3921603521194922141}
   - component: {fileID: 6636437764704075915}
+  - component: {fileID: 5223488331151573724}
   - component: {fileID: -3290437637992218534}
   - component: {fileID: 8179949930232597090}
-  - component: {fileID: 279147942554508164}
   - component: {fileID: 2027780735246281973}
   - component: {fileID: 4772643021332256812}
   m_Layer: 0
@@ -89,6 +89,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5223488331151573724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492616036977091865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96589d3fb238c04eb1881f6d5515d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minMaxSpeed: {x: 0.5, y: 2}
 --- !u!114 &-3290437637992218534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80de5f402828e004fbb7d4ffbb9bceec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMaxSpeed: {x: 0.5, y: 2}
 --- !u!114 &8179949930232597090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,19 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce29875c9e896c142875a780064ce428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &279147942554508164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492616036977091865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3a9767a8443e2b4a9972f3bc7a0a242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabCoinAudioClip: {fileID: 8300000, guid: 44abc088e0b4fd5489bb3dbe50ca04cc, type: 3}
+  grabCoinAudio: {fileID: 8300000, guid: 44abc088e0b4fd5489bb3dbe50ca04cc, type: 3}
 --- !u!58 &2027780735246281973
 CircleCollider2D:
   m_ObjectHideFlags: 0

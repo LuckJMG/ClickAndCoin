@@ -5,20 +5,23 @@ namespace ClickAndCoin
 {
     public class CoinCountManager : MonoBehaviour
     {
-        private const string message = "Coins:";
-
         [SerializeField] private TextMeshProUGUI coinTextMesh;
         private int _coinCount;
 
         private void Start()
         {
-            DestroyOnClick.OnDestroy += OnUpdate;
+            InputHandler.OnDestroy += OnCountUpdate;
         }
 
-        private void OnUpdate()
+        private void OnDestroy()
+        {
+            InputHandler.OnDestroy -= OnCountUpdate;
+        }
+
+        private void OnCountUpdate()
         {
             _coinCount += 1;
-            if (coinTextMesh != null) TextUpdater.Update(coinTextMesh, message, _coinCount);
+            if (coinTextMesh != null) coinTextMesh.text = "Coins: " + _coinCount.ToString();
         }
     }
 }

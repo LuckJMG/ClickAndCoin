@@ -13,7 +13,7 @@ namespace ClickAndCoin
         {
             _transform = transform;
             currentCameraObject =
-                currentCameraObject != null ? currentCameraObject : Camera.main.gameObject;
+            currentCameraObject != null ? currentCameraObject : Camera.main.gameObject;
             _gridGenerator = GetComponent<IGridGenerator>();
         }
 

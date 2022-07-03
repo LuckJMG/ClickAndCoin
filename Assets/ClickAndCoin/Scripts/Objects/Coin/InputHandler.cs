@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace ClickAndCoin
 {
-    public class DestroyOnClick : MonoBehaviour
+    public class InputHandler : MonoBehaviour
     {
         public static Action OnDestroy;
+
 
         private void OnMouseDown()
         {
