@@ -72,7 +72,7 @@ namespace ClickAndCoin
 
             float yPrefabPosition = cameraY + prefabHeight / 2;
             float xPrefabPosition = Random.Range(cameraMinX, cameraMaxX);
-            var prefabPosition = new Vector3(xPrefabPosition, yPrefabPosition, -1);
+            var prefabPosition = new Vector2(xPrefabPosition, yPrefabPosition);
 
             var prefabInstance = Instantiate(prefab, _transform);
             prefabInstance.transform.position = prefabPosition;
