@@ -16,11 +16,6 @@ namespace ClickAndCoin
             currentCamera = currentCamera != null ? currentCamera : Camera.main;
         }
 
-        private void Start()
-        {
-            SpawnerInitialization();
-        }
-
         public void SpawnerInitialization()
         {
             var spawnerParameters = CameraSpawnerPositionCalculator(currentCamera);
@@ -32,6 +27,15 @@ namespace ClickAndCoin
             var endPoint = new Vector2(xMax, y);
 
             StartCoroutine(RandomSpawnerCoroutine(prefab, startPoint, endPoint, spawnDelayInSeconds));
+        }
+
+        private IEnumerator RandomSpawnerCoroutine(GameObject prefab, Vector3 startPoint, Vector3 endPoint, float delayInSeconds)
+        {
+            while (true)
+            {
+                RandomSpawner(prefab, startPoint, endPoint);
+                yield return new WaitForSeconds(delayInSeconds);
+            }
         }
 
         private Vector3 CameraSpawnerPositionCalculator(Camera camera)
@@ -51,7 +55,7 @@ namespace ClickAndCoin
             return spawnerParameters;
         }
 
-        public void RandomSpawner(GameObject prefab, Vector3 startPosition, Vector3 endPosition)
+        private void RandomSpawner(GameObject prefab, Vector3 startPosition, Vector3 endPosition)
         {
             if (prefab == null) return;
 
@@ -74,13 +78,5 @@ namespace ClickAndCoin
             prefabInstance.transform.position = prefabPosition;
         }
 
-        public IEnumerator RandomSpawnerCoroutine(GameObject prefab, Vector3 startPoint, Vector3 endPoint, float delayInSeconds)
-        {
-            while (true)
-            {
-                RandomSpawner(prefab, startPoint, endPoint);
-                yield return new WaitForSeconds(delayInSeconds);
-            }
-        }
     }
 }
